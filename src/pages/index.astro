@@ -12,6 +12,229 @@ const SabecoLogoImg = await getImage({ src: SabecoLogo, format: 'png' });
 const Logo150Img = await getImage({ src: Logo150, format: 'png' });
 const DisclamerImg = await getImage({ src: Disclamer, format: 'png' });
 const BgImg = await getImage({ src: BG, format: 'jpg' });
+
+let data = [
+	{
+		name: "Trải nghiệm chung",
+		question: {
+			vi: "Anh/chị đánh giá tổng thể trải nghiệm tại sự kiện hôm nay như thế nào?",
+			en: "How would you rate your overall experience at today's event?"
+		},
+		type: {
+			value: "range",
+			defaultValue: 3,
+			min: {
+				value: 1,
+				label: {
+					vi: "Rất không hài lòng",
+					en: "Very dissatisfied"
+				}
+			},
+			max: {
+				value: 5,
+				label: {
+					vi: "Rất hài lòng",
+					en: "Very satisfied"
+				}
+			},
+		}
+	},
+	{
+		name: "Hoạt động sự kiện",
+		question: {
+			vi: "Các hoạt động trong sự kiện có hấp dẫn và phù hợp với anh/chị không?",
+			en: "Were the event activities engaging and relevant to you?"
+		},
+		type: {
+			value: "range",
+			defaultValue: 3,
+			min: {
+				value: 1,
+				label: {
+					vi: "Hoàn toàn không",
+					en: "Not at all"
+				}
+			},
+			max: {
+				value: 5,
+				label: {
+					vi: "Rất nhiều",
+					en: "Very much"
+				}
+			},
+		}
+	},
+	{
+		name: "Hoạt động ấn tượng nhất",
+		question: {
+			vi: "Hoạt động nào để lại ấn tượng mạnh nhất với anh/chị?",
+			en: "Which activity impressed you the most?"
+		},
+		type: {
+			value: "plain"
+		}
+	},
+	{
+		name: "Tổ chức sự kiện",
+		question: {
+			vi: "Anh/chị đánh giá công tác tổ chức (đón tiếp, bố trí, thời lượng…) như thế nào?",
+			en: "How would you rate the event organization (reception, layout, timing, etc.)?"
+		},
+		type: {
+			value: "range",
+			defaultValue: 3,
+			min: {
+				value: 1,
+				label: {
+					vi: "Rất kém",
+					en: "Very poor"
+				}
+			},
+			max: {
+				value: 5,
+				label: {
+					vi: "Rất tốt",
+					en: "Excellent"
+				}
+			},
+		}
+	},
+	{
+		name: "Hình ảnh thương hiệu",
+		question: {
+			vi: "Anh/chị có cảm thấy thương hiệu được thể hiện rõ ràng và ấn tượng trong sự kiện không?",
+			en: "Did you feel the brand was clearly and positively represented at the event?"
+		},
+		type: {
+			value: "range",
+			defaultValue: 3,
+			min: {
+				value: 1,
+				label: {
+					vi: "Hoàn toàn không",
+					en: "Not at all"
+				}
+			},
+			max: {
+				value: 5,
+				label: {
+					vi: "Rất ấn tượng",
+					en: "Very positive"
+				}
+			},
+		}
+	},
+	{
+		name: "Kết nối với thương hiệu",
+		question: {
+			vi: "Các hoạt động trải nghiệm có khiến anh/chị cảm thấy gần gũi hơn với thương hiệu không?",
+			en: "Did the event activities make you feel closer or more connected to the brand?"
+		},
+		type: {
+			value: "range",
+			defaultValue: 3,
+			min: {
+				value: 1,
+				label: {
+					vi: "Hoàn toàn không",
+					en: "Not at all"
+				}
+			},
+			max: {
+				value: 5,
+				label: {
+					vi: "Hoàn toàn đồng ý",
+					en: "Strong agree"
+				}
+			},
+		}
+	},
+	{
+		name: "Nhận biết thương hiệu",
+		question: {
+			vi: "Anh/chị có biết sự kiện này được thực hiện bởi nhãn hàng nào không? (Có thể điền nhiều hơn 1 nhãn hàng)",
+			en: "Do you know which brand(s) organized this event? (You may write more than one brand)"
+		},
+		type: {
+			value: "plain"
+		}
+	},
+	{
+		name: "Nhận thức thương hiệu",
+		question: {
+			vi: "Sau khi tham dự, nhận thức của anh/chị về thương hiệu [Brand] thay đổi thế nào?",
+			en: "After attending, how has your perception of [Brand] changed?"
+		},
+		type: {
+			value: "range",
+			defaultValue: 3,
+			min: {
+				value: 1,
+				label: {
+					vi: "Tiêu cực hơn",
+					en: "Much more negative"
+				}
+			},
+			max: {
+				value: 5,
+				label: {
+					vi: "Tích cực hơn",
+					en: "Much more positive"
+				}
+			},
+		}
+	},
+	{
+		name: "Ý định mua hàng",
+		question: {
+			vi: "Anh/chị có ý định mua hoặc sử dụng sản phẩm của [BSG, 333] sau sự kiện này không?",
+			en: "How likely are you to consider buying/using [BSG, 333] after this event?"
+		},
+		type: {
+			value: "range",
+			defaultValue: 3,
+			min: {
+				value: 1,
+				label: {
+					vi: "Hoàn toàn không",
+					en: "Not at all likely"
+				}
+			},
+			max: {
+				value: 5,
+				label: {
+					vi: "Rất có khả năng",
+					en: "Very likely"
+				}
+			},
+		}
+	},
+	{
+		name: "Ý định giới thiệu",
+		question: {
+			vi: "Anh/chị có sẵn sàng giới thiệu thương hiệu/sự kiện này cho bạn bè hoặc người thân không?",
+			en: "How likely are you to recommend this brand/event to friends or family?"
+		},
+		type: {
+			value: "range",
+			defaultValue: 5,
+			min: {
+				value: 1,
+				label: {
+					vi: "Chắc chắn không",
+					en: "Definitely not"
+				}
+			},
+			max: {
+				value: 10,
+				label: {
+					vi: "Chắc chắn có",
+					en: "Definitely yes"
+				}
+			},
+		}
+	},
+]
 ---
 <Layout title="Sabeco Hành Trình Di Sản">
 	<main>
@@ -70,61 +293,57 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 						</div>
 					</div>
 					<form class="form" id="form" autocomplete="off">
+						<div class="container">
+							<div class="nav">
+								<span class="nav-item active"></span>
+								<span class="nav-item"></span>
+								<span class="nav-item"></span>
+								<span class="nav-item"></span>
+								<span class="nav-item"></span>
+								<span class="nav-item"></span>
+								<span class="nav-item"></span>
+								<span class="nav-item"></span>
+								<span class="nav-item"></span>
+								<span class="nav-item"></span>
+								<span class="nav-item"></span>
+							</div>
+						</div>
 						<div class="form-inner">
 							<div class="second-screen step-item" data-step={2}>
 								<div class="container">
-									<div class="second-screen-head">
-											<div class="second-screen-img">
-											<Image
-												src={SabecoLogoImg.src}
-												alt=""
-												width={620}
-												height={617}
-												class="img"
-											/>
-										</div>
-										<div class="second-screen-img">
-											<Image
-												src={Logo150Img.src}
-												alt=""
-												width={445}
-												height={362}
-												class="img"
-											/>
-										</div>
-									</div>
 									<div class="second-screen-wrap">
 										<div class="infor-title">
 											<span class="vi">Thông tin khách hàng</span>
+											<span class="en">Customer information</span>
 										</div>
 										<div class="infor-content">
 											<div class="infor-content-wrap">
 												<div class="input-field name">
-													<label for='name'>Họ và tên</label>
-													<input type='text' name='Tên' placeholder="Nguyen Van A" autocomplete="off" required/>
+													<label for='name'>Họ và tên <span class="italic">/ Full name</span></label>
+													<input type='text' name='Tên' placeholder="Nguyen Van A" autocomplete="off" />
 												</div>
 												<div class="input-field age">
-													<label for='age'>Tuổi</label>
-													<input type='number' name='Tuổi' placeholder="18" autocomplete="off" min="18" max="100" required/>
+													<label for='age'>Tuổi <span class="italic">/ Age</span></label>
+													<input type='number' name='Tuổi' placeholder="24" autocomplete="off" />
 												</div>
 											</div>
 											<div class="input-field gender">
-												<label for='gender'>Giới tính</label>
+												<label for='gender'>Giới tính <span class="italic">/ Gender</span></label>
 												<div class="input-radio-wrap">
 													<div class="input-radio-field">
-														<input type='radio' name='Giới tính' value='Nam' required/>
+														<input type='radio' name='Giới tính' value='Nam' />
 														<span class="fake-radio"></span>
-														<label for='gender'>Nam</label>
+														<label for='gender'>Nam <span class="italic">/ Male</span></label>
 													</div>
 													<div class="input-radio-field">
 														<input type='radio' name='Giới tính' value="Nữ" />
 														<span class="fake-radio"></span>
-														<label for='gender'>Nữ</label>
+														<label for='gender'>Nữ <span class="italic">/ Female</span></label>
 													</div>
 													<div class="input-radio-field">
 														<input type='radio' name='Giới tính' value="Khác" />
 														<span class="fake-radio"></span>
-														<label for='gender'>Khác</label>
+														<label for='gender'>Khác <span class="italic">/ Other</span></label>
 													</div>
 												</div>
 											</div>
@@ -132,46 +351,281 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 									</div>
 								</div>
 							</div>
-							<button id='submit' type="submit" class="btn-submit">
-								<span>Xác nhận thông tin</span>
-							</button>
+							{data.map((item, index) => (
+								<div class="step-item" data-step={index + 3}>
+									<div class="container">
+										<div class="step-wrap">
+											<div class="step-title">
+												{item.question.vi}
+												<div class="italic">{item.question.en}</div>
+											</div>
+											{item.type.value === "range" ? (
+												<div class="input-range-wrap">
+													<div class="input-range-label-wrap">
+														<div class="input-range-label">
+															{item.type.min.label.vi}
+															<div class="italic">{item.type.min.label.en}</div>
+														</div>
+														<div class="input-range-label">
+															{item.type.max.label.vi}
+															<div class="italic">{item.type.max.label.en}</div>
+														</div>
+													</div>
+													<input type="range" name={item.name} min={item.type.min.value} max={item.type.max.value} step="1" value={item.type.defaultValue} />
+													<div class="input-range-content">{item.type.defaultValue}</div>
+												</div>
+											) : (
+												<div class="input-field">
+													<textarea name={item.name} placeholder="(Open-ended / Câu trả lời mở)" autocomplete="off"></textarea>
+												</div>
+											)}
+										</div>
+									</div>
+								</div>
+							))}
+							<!-- <div class="third-screen step-item" data-step={3}>
+								<div class="container">
+									<div class="third-screen-wrap">
+										<div class="form-field">
+											<div class="form-field-ques">
+												{data[0].question.vi}
+												<div class="italic">{data[0].question.en}</div>
+											</div>
+											<div class="form-field-choice">
+												<div class="form-field-choice-listing">
+													{[...Array(11)].map((_, idx) => (
+														<div class="form-field-choice-item">
+															<input type="radio" name={data[0].name} value={idx} />
+															<label for={`quest_1_${idx}`}>{idx}</label>
+														</div>
+													))}
+												</div>
+												<div class="form-field-choice-desc">
+													<div class="form-field-choice-desc-txt"><span>Cực kỳ không thích</span><span class="italic">Dislike extremely</span></div>
+													<div class="form-field-choice-desc-txt"><span>Cực kỳ thích</span><span class="italic">Like extremely</span></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="fourth-screen step-item" data-step={4}>
+								<div class="container">
+									<div class="fourth-screen-wrap">
+										<div class="form-field">
+											<div class="form-field-ques">
+												{data[1].question.vi}
+												<div class="italic">{data[1].question.en}</div>
+											</div>
+											<div class="form-field-choice">
+												<div class="form-field-choice-listing">
+													{[...Array(11)].map((_, idx) => (
+														<div class="form-field-choice-item">
+															<input type="radio" name={data[1].name} value={idx} />
+															<label for={`quest_2_${idx}`}>{idx}</label>
+														</div>
+													))}
+												</div>
+												<div class="form-field-choice-desc">
+													<div class="form-field-choice-desc-txt"><span>Cực kỳ không thích</span><span class="italic">Dislike extremely</span></div>
+													<div class="form-field-choice-desc-txt"><span>Cực kỳ thích</span><span class="italic">Like extremely</span></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="fifth-screen step-item" data-step={5}>
+								<div class="container">
+									<div class="fifth-screen-wrap">
+										<div class="form-field">
+											<div class="form-field-ques">
+												{data[2].question.vi}
+												<div class="italic">{data[2].question.en}</div>
+											</div>
+											<div class="form-field-choice">
+												<div class="form-field-choice-listing mod-txt">
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[2].name} value={'Rất không dễ uống'} />
+														<label for={`quest_3_1`}>1</label><span>Rất không dễ uống <span class="italic">/ Not easy to drink at all</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[2].name} value={'Hơi không dễ uống'} />
+														<label for={`quest_3_2`}>2</label><span>Hơi không dễ uống <span class="italic">/ Quite not easy to drink</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[2].name} value={'Bình thường'} />
+														<label for={`quest_3_3`}>3</label><span>Bình thường <span class="italic">/ Normal</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[2].name} value={'Hơi dễ uống'} />
+														<label for={`quest_3_4`}>4</label><span>Hơi dễ uống <span class="italic">/ Quite easy to drink</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[2].name} value={'Rất dễ uống'} />
+														<label for={`quest_3_5`}>5</label><span>Rất dễ uống <span class="italic">/ Extremely easy to drink</span></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="sixth-screen step-item" data-step={6}>
+								<div class="container">
+									<div class="sixth-screen-wrap">
+										<div class="form-field">
+											<div class="form-field-ques">
+												{data[3].question.vi}
+												<div class="italic">{data[3].question.en}</div>
+											</div>
+											<div class="form-field-choice">
+												<div class="form-field-choice-desc">
+													<div class="form-field-choice-desc-txt"><span>Uống sản phẩm</span><span class="italic">Drink it</span></div>
+												</div>
+												<div class="form-field-choice-listing mod-grid">
+													<div class="form-field-choice-item mod-grid">
+														<input type="radio" name={data[3].name} value={'Uống sản phẩm ở nhiệt độ thường, không đá'} />
+														<label for={`quest_4_1`}><span>ở nhiệt độ thường, không đá</span><span class="italic">at room temperature without ice</span></label>
+													</div>
+													<div class="form-field-choice-item mod-grid">
+														<input type="radio" name={data[3].name} value={'Uống sản phẩm ở nhiệt độ thường, có đá'} />
+														<label for={`quest_4_2`}><span>ở nhiệt độ thường, có đá</span><span class="italic">at room temperature with ice</span></label>
+													</div>
+													<div class="form-field-choice-item mod-grid">
+														<input type="radio" name={data[3].name} value={'Uống sản phẩm đã được ướp lạnh, không đá'} />
+														<label for={`quest_4_3`}><span>đã được ướp lạnh, không đá</span><span class="italic">when it is chilled without ice</span></label>
+													</div>
+													<div class="form-field-choice-item mod-grid">
+														<input type="radio" name={data[3].name} value={'Uống sản phẩm đã được ướp lạnh, có đá'} />
+														<label for={`quest_4_4`}><span>đã được ướp lạnh, có đá</span><span class="italic">when it is chilled with ice</span></label>
+													</div>
+													<div class="form-field-choice-item mod-grid">
+														<input type="radio" name={data[3].name} value={'Pha với sản phẩm khác'} />
+														<label for={`quest_4_4`}><span>pha với sản phẩm khác</span><span class="italic">mix with other products</span></label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="seventh-screen step-item" data-step={7}>
+								<div class="container">
+									<div class="seventh-screen-wrap">
+										<div class="form-field">
+											<div class="form-field-ques">
+												{data[4].question.vi}
+												<div class="italic">{data[4].question.en}</div>
+											</div>
+											<div class="form-field-choice">
+												<div class="form-field-choice-listing">
+													{[...Array(11)].map((_, idx) => (
+														<div class="form-field-choice-item">
+															<input type="radio" name={data[4].name} value={idx} />
+															<label for={`quest_5_${idx}`}>{idx}</label>
+														</div>
+													))}
+												</div>
+												<div class="form-field-choice-desc">
+													<div class="form-field-choice-desc-txt"><span>Cực kỳ không thích</span><span class="italic">Dislike extremely</span></div>
+													<div class="form-field-choice-desc-txt"><span>Cực kỳ thích</span><span class="italic">Like extremely</span></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="eighth-screen step-item" data-step={8}>
+								<div class="container">
+									<div class="eighth-screen-wrap">
+										<div class="form-field">
+											<div class="form-field-ques">
+												{data[5].question.vi}
+												<div class="italic">{data[5].question.en}</div>
+											</div>
+											<div class="form-field-choice">
+												<div class="form-field-choice-listing mod-txt">
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[5].name} value={'Chắc chắn không mua'} />
+														<label for={`quest_6_1`}>1</label><span>Chắc chắn không mua <span class="italic">/ Definitely would not buy</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[5].name} value={'Có thể không mua'} />
+														<label for={`quest_6_2`}>2</label><span>Có thể không mua <span class="italic">/ Probalby would not buy</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[5].name} value={'Có thể mua hoặc không mua'} />
+														<label for={`quest_6_3`}>3</label><span>Có thể mua hoặc không mua <span class="italic">/ Might or might not buy</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[5].name} value={'Có thể sẽ mua'} />
+														<label for={`quest_6_4`}>4</label><span>Có thể sẽ mua <span class="italic">/ Probably would buy</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[5].name} value={'Chắc chắn sẽ mua'} />
+														<label for={`quest_6_5`}>5</label><span>Chắc chắn sẽ mua <span class="italic">/ Definitely would buy</span></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="ninth-screen step-item" data-step={9}>
+								<div class="container">
+									<div class="ninth-screen-wrap">
+										<div class="form-field">
+											<div class="form-field-ques">
+												{data[6].question.vi}
+												<div class="italic">{data[6].question.en}</div>
+											</div>
+											<div class="form-field-choice">
+												<div class="form-field-choice-listing mod-txt">
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[6].name} value={'Chắc chắn không giới thiệu'} />
+														<label for={`quest_7_1`}>1</label><span>Chắc chắn không giới thiệu <span class="italic">/ Definitely would not recommend</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[6].name} value={'Có thể không giới thiệu'} />
+														<label for={`quest_7_2`}>2</label><span>Có thể không giới thiệu <span class="italic">/ Probalby would not recommend</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[6].name} value={'Có thể giới thiệu hoặc không giới thiệu'} />
+														<label for={`quest_7_3`}>3</label><span>Có thể giới thiệu hoặc không giới thiệu <span class="italic">/ Might or might not recommend</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[6].name} value={'Có thể sẽ giới thiệu'} />
+														<label for={`quest_7_4`}>4</label><span>Có thể sẽ giới thiệu <span class="italic">/ Probably would recommend</span></span>
+													</div>
+													<div class="form-field-choice-item mod-txt">
+														<input type="radio" name={data[6].name} value={'Chắc chắn sẽ giới thiệu'} />
+														<label for={`quest_7_5`}>5</label><span>Chắc chắn sẽ giới thiệu <span class="italic">/ Definitely would recommend</span></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+						</div>
+						<div class="container">
+							<div class="form-control">
+								<div class="form-control-prev">
+									<span>Quay lại</span>
+									<span class="italic">Previous</span>
+								</div>
+								<div class="form-control-next">
+									<div>
+										<span data-text-vi>Tiếp tục</span>
+										<span class="italic" data-text-en>Next</span>
+									</div>
+									<button id='submit' type="submit"></button>
+								</div>
+							</div>
 						</div>
 					</form>
-					<div class="third-screen step-item" data-step={3}>
-						<div class="container">
-							<div class="third-screen-head">
-								<div class="third-screen-img">
-									<Image
-										src={SabecoLogoImg.src}
-										alt=""
-										width={620}
-										height={617}
-										class="img"
-									/>
-								</div>
-								<div class="third-screen-img">
-									<Image
-										src={Logo150Img.src}
-										alt=""
-										width={445}
-										height={362}
-										class="img"
-									/>
-								</div>
-							</div>
-							<div class="third-screen-wrap">
-								<div class="third-screen-ques">Năm nào SABECO bắt đầu hành trình của mình, như được hiển thị trên dòng thời gian trên xe?</div>
-								<div class="third-screen-ans">
-									<ol>
-										<li>Công nghệ lên men nhanh</li>
-										<li>Công nghệ lọc lạnh -2°C</li>
-										<li>Công nghệ nấu bia thủ công</li>
-									</ol>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="last-screen step-item" data-step={4}>
+					<div class="last-screen step-item" data-step={13}>
 						<div class="container">
 							<div class="last-screen-head">
 								<div class="last-screen-img">
@@ -258,6 +712,28 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 			grid-template-columns: 1fr;
 		}
 	}
+	.nav {
+		padding-block: 5rem;
+		display: flex;
+		gap: 0 .8rem;
+		opacity: 0;
+		pointer-events: none;
+		&.active {
+			opacity: 1;
+			pointer-events: auto;
+		}
+		&-item {
+			height: .3rem;
+			background-color: rgba(0, 0, 0, 1);
+			flex: 1;
+			border-radius: 100vmax;
+			opacity: .2;
+			transition: opacity .4s ease-in-out;
+			&.active {
+				opacity: 1;
+			}
+		}
+	}
 	.step-item {
 		grid-area: 1/1/2/2;
 		opacity: 0;
@@ -269,11 +745,100 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 			pointer-events: auto;
 		}
 	}
+	.input-range-wrap {
+		width: 100%;
+		position: relative;
+	}
+	.input-range-label-wrap {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 2rem;
+		pointer-events: none;
+		.input-range-label {
+			font-size: 1.2rem;
+			font-weight: 600;
+			.italic {
+				font-weight: 400;
+			}
+		}
+		.input-range-label:last-child {
+			text-align: right;
+		}
+	}
+	.input-range-content {
+		position: absolute;
+		bottom: -.8rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 3.2rem;
+		height: 3.2rem;
+		color: var(--cl-white);
+		border-radius: 50%;
+		pointer-events: none;
+		z-index: 2;
+		font-weight: 500;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 1.4rem;
+		text-align: center;
+	}
+	input[type="range"] {
+		width: 100%;
+		height: .8rem;
+		border-radius: .4rem;
+		background: #e0e0e0;
+		outline: none;
+		-webkit-appearance: none;
+		position: relative;
+	}
+	input[type="range"]::-webkit-slider-track {
+            width: 100%;
+            height: .8rem;
+            border-radius: .4rem;
+            background: #e0e0e0;
+        }
+
+        /* Thumb cho Webkit */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 3.2rem;
+            height: 3.2rem;
+            border-radius: 50%;
+            background: var(--cl-primary);
+            cursor: pointer;
+            box-shadow: 0 .2rem .6rem rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+
+        /* Track cho Firefox */
+        input[type="range"]::-moz-range-track {
+            width: 100%;
+            height: .8rem;
+            border-radius: .4rem;
+            background: #e0e0e0;
+            border: none;
+        }
+
+        /* Thumb cho Firefox */
+        input[type="range"]::-moz-range-thumb {
+            width: 3.2rem;
+            height: 3.2rem;
+            border-radius: 50%;
+            background: var(--cl-primary);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 .2rem .6rem rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+
 	.first-screen {
 		position: relative;
 		z-index: 3;
 		width: 100%;
 		height: 100%;
+		margin-bottom: 0 !important;
 		&-wrap {
 			padding-top: 8.46svh;
 			display: flex;
@@ -291,13 +856,14 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 				margin-left: -6rem;
 			}
 			&:last-child {
-				width: 15rem;
+				width: 12rem;
 				margin-left: -4rem;
 			}
 		}
 		&-title {
 			margin-top: -4rem;
 			margin-bottom: 2rem;
+
 		}
 	}
 	.btn-start {
@@ -350,9 +916,9 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 		padding: .4rem .6rem;
 	}
 	.second-screen {
+		margin-bottom: 4rem !important;
 		&-wrap {
-			padding-top: 4rem;
-			padding-bottom: 6rem;
+			padding-bottom: 2rem;
 		}
 		&-head {
 			display: flex;
@@ -469,6 +1035,12 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 			line-height: 1em;
 			text-transform: uppercase;
 		}
+		.en {
+			font-size: 1.8rem;
+			font-weight: 400;
+			line-height: 1.6em;
+			font-style: italic;
+		}
 	}
 	.infor-content {
 		display: flex;
@@ -485,6 +1057,7 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 		display: flex;
 		flex-direction: column;
 		gap: 1.2rem 0;
+		width: 100%;
 		label {
 			font-weight: 600;
 			font-size: 1.8rem;
@@ -492,16 +1065,21 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 				font-weight: 400;
 			}
 		}
-		input {
+		input,
+		textarea {
 			padding: 1.2rem 1.6rem;
 			border-radius: .8rem;
 			background-color: #dcd3d359;
 			border: none;
-			font-size: 1.8rem;
+			font-size: 1.6rem;
 			color: black;
+			font-family: inherit;
 			&::placeholder {
 				color: rgba(0, 0, 0, 0.25);
 			}
+		}
+		textarea {
+			min-height: 15rem;
 		}
 	}
 	.input-radio {
@@ -556,17 +1134,15 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 		gap: 1rem;
 		flex-direction: column;
 	}
-	.form-field  {
-		margin-top: 7rem;
-		padding-inline: 1.2rem;
+	.form-field,
+	.step-wrap  {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		color: black;
 		&-ques {
-			padding: 2.5rem 3rem;
-			background-color: var(--cl-dm-bg);
 			border-radius: 2.4rem;
-			font-size: 2rem;
+			font-size: 1.8rem;
 			line-height: 1.4em;
 			letter-spacing: -.01em;
 			font-weight: 600;
@@ -577,6 +1153,7 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 			}
 		}
 		&-choice {
+			display: none;
 			&-listing {
 				display: flex;
 				align-items: center;
@@ -709,6 +1286,24 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 			}
 		}
 	}
+	.step {
+		&-item {
+			margin-bottom: 10rem;
+		}
+		&-title {
+			border-radius: 2.4rem;
+			font-size: 1.8rem;
+			line-height: 1.4em;
+			letter-spacing: -.01em;
+			font-weight: 600;
+			margin-bottom: 4rem;
+			.italic {
+				font-weight: 400;
+				margin-top: 1rem;
+				font-size: 1.6rem;
+			}
+		}
+	}
 	.last-screen {
 		color: #000;
 		grid-area: 1/1/3/2;
@@ -753,258 +1348,91 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 			}
 		}
 	}
+	.form-control {
+		display: flex;
+		justify-content: end;
+		gap: 0 .8rem;
+		opacity: 0;
+		pointer-events: none;
+		&.active {
+			opacity: 1;
+			pointer-events: auto;
+		}
+		&-prev,
+		&-next {
+			@keyframes hover-state {
+				0% {
+					filter: brightness(.6);
+				}
+				100% {
+					filter: brightness(1);
+				}
+			}
+			&:hover {
+				animation: hover-state .5s ease-in-out;
+			}
+		}
+		&-prev {
+			display: flex;
+			flex-direction: column;
+			font-size: 1.5rem;
+			font-weight: 600;
+			padding: 1rem;
+			color: #000;
+			.italic {
+				font-weight: 400;
+			}
+		}
+		&-next {
+
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: var(--cl-white);
+			background-color: #242223;
+			padding: 1rem;
+			border-radius: 1.2rem;
+			position: relative;
+			> div {
+				display: flex;
+				flex-direction: column;
+			}
+			#submit {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				pointer-events: none;
+				z-index: 2;
+
+			}
+			&.submit {
+				#submit {
+					pointer-events: auto;
+				}
+			}
+			.italic {
+				font-weight: 400;
+			}
+		}
+	}
 </style>
 <script is:inline>
-	const data = [
-  {
-    "question": "Hành trình Di sản của SABECO khởi đầu từ năm nào?",
-    "answer": "1875",
-    "options": ["1871", "1875", "1877"]
-  },
-  {
-    "question": "Năm 2020, SABECO chạm mốc bao nhiêu lít bia hàng năm?",
-    "answer": "1 tỷ",
-    "options": ["100 triệu", "1 tỷ", "2 tỷ"]
-  },
-  {
-    "question": "Năm 2025 đánh dấu cột mốc bao nhiêu năm di sản của SABECO?",
-    "answer": "150",
-    "options": ["140", "145", "150"]
-  },
-  {
-    "question": "Chuyến xe Hành Trình Di Sản của SABECO sẽ đi qua bao nhiêu địa điểm?",
-    "answer": "9",
-    "options": ["8", "9", "10"]
-  },
-  {
-    "question": "SABECO hiện có bao nhiêu thợ nấu bia là người Việt Nam?",
-    "answer": "46",
-    "options": ["46", "42", "40"]
-  },
-  {
-    "question": "SABECO đạt bao nhiêu huy chương quốc tế về chất lượng bia từ năm 2018 đến nay?",
-    "answer": "54",
-    "options": ["51", "53", "54"]
-  },
-  {
-    "question": "Đâu là sáng kiến cộng đồng SABECO từng thực hiện trong 3 năm vừa qua?",
-    "answer": "Thắp sáng đường quê",
-    "options": ["Thắp sáng đường quê", "Đem điện lên bản", "Lọc nước miền quê"]
-  },
-  {
-    "question": "Thông điệp được chia sẻ tại khu vực Gìn giữ và Trách nhiệm (ESG) là gì?",
-    "answer": "Cam kết trách nhiệm với cộng đồng, môi trường và tương lai của SABECO",
-    "options": [
-      "Cam kết trách nhiệm với cộng đồng, môi trường và tương lai của SABECO",
-      "Cam kết tiết kiệm điện",
-      "Cam kết đồng hành cùng sự phát triển của Việt Nam"
-    ]
-  },
-  {
-    "question": "Nguyên liệu làm bia bao gồm những gì?",
-    "answer": "Mạch nha, hoa bia, men và nước",
-    "options": [
-      "Mạch nha, hoa bia, men và nước",
-      "Mạch nha, men và nước",
-      "Mạch nha, hương liệu, men và nước"
-    ]
-  },
-  {
-    "question": "Từ năm 2018 đến nay, SABECO sở hữu bao nhiêu thương hiệu bia?",
-    "answer": "3",
-    "options": ["2", "3", "4"]
-  },
-  {
-    "question": "Điểm đến cuối cùng của Hành Trình Di Sản và Đêm Di sản của SABECO là ở đâu?",
-    "answer": "Hà Nội",
-    "options": ["Hà Nội", "Nghệ An", "Bình Định"]
-  },
-  {
-    "question": "SABECO có bao nhiêu nhà máy trên toàn quốc?",
-    "answer": "25",
-    "options": ["24", "25", "26"]
-  },
-  {
-    "question": "Một trong các nguyên tắc thưởng thức có trách nhiệm là gì?",
-    "answer": "Tôn trọng sự lựa chọn của người khác, không ép uống",
-    "options": [
-      "Tôn trọng sự lựa chọn của người khác, không ép uống",
-      "Uống thoải mái, miễn không lái xe sau khi uống bia là được",
-      "Uống để vui vẻ, giải tỏa căng thẳng cho bản thân"
-    ]
-  },
-  {
-    "question": "Uống rượu/bia có thể ảnh hưởng như thế nào đến khả năng lái xe?",
-    "answer": "Ảnh hưởng đến khả năng tập trung, phản xạ và ra quyết định khi tham gia giao thông.",
-    "options": [
-      "Không ảnh hưởng nếu chỉ uống một lượng nhỏ.",
-      "Ảnh hưởng đến khả năng tập trung, phản xạ và ra quyết định khi tham gia giao thông.",
-      "Giúp tăng sự tự tin khi lái xe."
-    ]
-  },
-  {
-    "question": "Sau khi uống bia, lựa chọn nào sau đây là tốt nhất để đảm bảo an toàn khi về nhà?",
-    "answer": "Sử dụng dịch vụ gọi xe hoặc nhờ người không uống rượu/bia lái hộ.",
-    "options": [
-      "Tự lái xe nếu bạn vẫn cảm thấy tỉnh táo.",
-      "Sử dụng dịch vụ gọi xe hoặc nhờ người không uống rượu/bia lái hộ.",
-      "Đi bộ về nhà."
-    ]
-  }
-]
-
-	function shuffleArray(array) {
-		for (let i = array.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[array[i], array[j]] = [array[j], array[i]];
-		}
-		return array;
-	}
-
-	const alreadyAskedQuestions = [];
-	let correctAnswers = 0;
-	let currentQuestionIndex = 0;
-	let currStep = 1;
-	let lastStep = 4;
-
-    function showResult(message) {
-		document.querySelector('.last-screen-title-txt').innerHTML = message;
-    }
-
-	function createNewQuestion(data) {
-		// Get available questions that haven't been asked yet
-		const availableQuestions = data.filter(q => !alreadyAskedQuestions.includes(q));
-
-		// If no questions are left or we've asked 3 questions, end the game
-		if (availableQuestions.length === 0 || currentQuestionIndex >= 3) {
-			if (correctAnswers >= 2) {
-				showResult('Chúc mừng bạn đã giành được<br/>cơ hội tham gia Hành Trình Di Sản!');
-			} else {
-				showResult('Chúc bạn may mắn lần sau');
-			}
-			return;
-		}
-
-		// Get random question from available questions
-		const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-		const question = availableQuestions[randomIndex];
-
-		// Add to asked questions list
-		alreadyAskedQuestions.push(question);
-
-		// Display question
-		document.querySelector('.third-screen-ques').innerHTML = question.question;
-
-		// Shuffle options
-		let options = shuffleArray([...question.options]);
-
-		// Reuse existing <li> elements
-		const answerElements = document.querySelectorAll('.third-screen-ans li');
-		answerElements.forEach((element, index) => {
-			// Reset element
-			element.classList.remove('selected', 'correct', 'incorrect');
-			element.removeAttribute('data-answer');
-			element.innerHTML = options[index];
-			document.querySelector('.third-screen-ans').style.pointerEvents = 'auto';
-
-			// Set correct answer attribute
-			if (options[index] === question.answer) {
-				element.setAttribute('data-answer', 'true');
-			}
-
-			// Remove existing event listeners by cloning the element
-			const newElement = element.cloneNode(true);
-			element.parentNode.replaceChild(newElement, element);
-
-			// Add new event listener
-			newElement.addEventListener('click', function handleAnswer() {
-				// Disable further clicks
-				newElement.classList.add('selected');
-
-				// Check if answer is correct
-				if (newElement.getAttribute('data-answer') === 'true') {
-					correctAnswers++;
-				}
-				document.querySelector('.third-screen-ans').style.pointerEvents = 'none';
-
-				// Highlight correct and incorrect answers
-				setTimeout(() => {
-					newElement.closest('ol').querySelectorAll('li').forEach(el => {
-						if (el.getAttribute('data-answer') === 'true') {
-							el.classList.add('correct');
-						} else {
-							el.classList.add('incorrect');
-						}
-					});
-				}, 1000);
-
-				// Handle game logic after a delay
-				setTimeout(() => {
-					if (currentQuestionIndex === 1) { // After second question
-						if (correctAnswers === 2) {
-							showResult('Chúc mừng bạn đã giành được<br/>cơ hội tham gia Hành Trình Di Sản!');
-							currStep++;
-							updateScreen();
-							return;
-						} else if (correctAnswers === 0) {
-							showResult('Chúc bạn may mắn lần sau!');
-							currStep++;
-							updateScreen();
-							return;
-						}
-					}
-
-					// Move to next question
-					currentQuestionIndex++;
-					if (currentQuestionIndex < 3) {
-						createNewQuestion(data);
-					} else {
-						currStep++;
-						updateScreen();
-						if (correctAnswers >= 2) {
-							showResult('Chúc mừng bạn đã giành được<br/>cơ hội tham gia Hành Trình Di Sản!');
-						} else {
-							showResult('Chúc bạn may mắn lần sau!');
-						}
-					}
-				}, 2000);
-			}, { once: true }); // Ensure event listener triggers only once
-		});
-	}
-	createNewQuestion(data);
-
-	const updateScreen = () => {
-		document.querySelectorAll('[data-step]').forEach(step => {
-			if (step.getAttribute('data-step') == currStep) {
-				step.classList.add('active');
-			}
-			else {
-				step.classList.remove('active');
-			}
-		})
-		document.querySelector('.form').classList[(currStep == 2) ? 'add' : 'remove']('active')
-	}
-
-	document.querySelector('.btn-start').addEventListener('click', function (e) {
-		e.preventDefault();
-		currStep++;
-		updateScreen();
-	})
-	// document.querySelector('.btn-submit').addEventListener('click', function (e) {
-	// 	e.preventDefault();
-	// 	currStep++;
-	// 	updateScreen();
-	// })
-
-	const DEPLOYMENTURI = 'AKfycbz0DR38e1PuQ8XLxZFA5RzxzBKOdgWWJaHOfBTlbrEFJgKelFh86RnXtAk7k-LPDQFl';
+	const DEPLOYMENTURI = 'AKfycbwImvV7fiJWbX7fPYZ0m0P96aNKLeQKj1yDEgm6d3gOq99E0HaRkpqETkZd8CkVw-dVnA';
 	const form = document.querySelector("#form");
 	const submitButton = document.querySelector("#submit");
+	let currStep = 1;
+	let lastStep = 13;
+
 	form?.addEventListener("submit", async function(event) {
+		console.log("event")
 		event.preventDefault();
 		const formData = new FormData(form);
 		const data = Object.fromEntries(formData);
 		currStep++;
 		updateScreen();
+		// submitButton.disabled = true;
 
 		try {
 			const response = await fetch(`https://script.google.com/macros/s/${DEPLOYMENTURI}/exec`, {
@@ -1012,10 +1440,83 @@ const BgImg = await getImage({ src: BG, format: 'jpg' });
 				body: new URLSearchParams(data)
 			});
 			const responseText = await response.text();
+			// alert(responseText);
+			// submitButton.disabled = false;
+			document.querySelector(`[data-step='${lastStep}']`).classList.add('success');
 			form.reset();
 		}
 		catch (error) {
 			alert(error);
+			// submitButton.disabled = false;
 		}
 	});
+	function updateInputRangeLabel(input) {
+		const value = input.value;
+		const min = input.min;
+		const max = input.max;
+		const label = input.nextElementSibling;
+
+		const percent = ((value - min) / (max - min)) * 100;
+
+		const sliderWidth = input.offsetWidth;
+		const thumbSize = label.offsetWidth;
+		const availableWidth = sliderWidth - thumbSize;
+		const thumbPosition = (percent / 100) * availableWidth + (thumbSize / 2) + 2;
+		label.style.left = thumbPosition + 'px';
+		label.textContent = value;
+	}
+	document.querySelectorAll('input[type="range"]').forEach(input => {
+		input.addEventListener ("input", (e) => updateInputRangeLabel(e.target));
+	})
+
+	const updateScreen = () => {
+		// let currStep = document.querySelector('[data-curr-step]').getAttribute('data-curr-step');
+		document.querySelectorAll('[data-step]').forEach(step => {
+			if (step.getAttribute('data-step') == currStep) {
+				step.classList.add('active');
+				step.querySelector('input[type="range"]') && updateInputRangeLabel(step.querySelector('input[type="range"]'));
+			}
+			else {
+				step.classList.remove('active');
+			}
+		})
+		document.querySelector('.wrapper-inner').classList[(currStep == 1 || currStep == lastStep) ? 'remove' : 'add']('move-step');
+		document.querySelector('.nav').classList[(currStep == 1 || currStep == lastStep) ? 'remove' : 'add']('active');
+		document.querySelector('.form-control').classList[(currStep == 1 || currStep == lastStep) ? 'remove' : 'add']('active');
+		document.querySelectorAll('.nav-item').forEach((el, idx) => {
+			if (idx == currStep - 2) {
+				el.classList.add('active');
+			}
+			else {
+				el.classList.remove('active');
+			}
+		})
+
+		document.querySelector('.form-control-next [data-text-vi]').innerHTML = (currStep < (lastStep - 1)) ? 'Tiếp tục' : 'Hoàn thành';
+		document.querySelector('.form-control-next [data-text-en]').innerHTML = (currStep < (lastStep - 1)) ? 'Next' : 'Done';
+		document.querySelector('.form-control-next').classList[(currStep < (lastStep - 1)) ? 'remove' : 'add']('submit')
+
+		document.querySelector('.form').classList[(currStep == 1 || currStep == lastStep) ? 'remove' : 'add']('active')
+	}
+	updateScreen();
+	document.querySelector('.btn-start').addEventListener('click', function (e) {
+		if (currStep > 1) return;
+		e.preventDefault();
+		currStep++;
+		updateScreen();
+	})
+	document.querySelector('.form-control-prev').addEventListener('click', function(e) {
+		if (currStep <= 1) return;
+
+		e.preventDefault();
+		currStep--;
+		updateScreen();
+	})
+
+	document.querySelector('.form-control-next').addEventListener('click', function(e) {
+		if (currStep >= lastStep - 1) return;
+		e.preventDefault();
+		currStep++;
+		updateScreen();
+	})
 </script>
